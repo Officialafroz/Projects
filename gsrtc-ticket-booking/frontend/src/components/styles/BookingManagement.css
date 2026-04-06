@@ -1,0 +1,136 @@
+/**
+ * BookingManagement.css
+ *
+ * @format
+ */
+
+.booking-management {
+  width: calc(100% - 250px);
+  position: relative;
+  left: 250px;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+.search-filter {
+  /* position: fixed; */
+
+  /* left: 0; */
+  /* max-width: calc(100% - 250px); */
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Header */
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.booking-header h2 {
+  font-size: 1.6rem;
+  color: #222;
+  font-weight: 600;
+}
+
+.booking-header button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.booking-header button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Booking Table */
+.booking-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.booking-table th,
+.booking-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.booking-table th {
+  background-color: #f3f4f6;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.booking-table td {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+/* Actions */
+.booking-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.booking-actions button {
+  border: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.booking-actions .edit {
+  background-color: #facc15;
+  color: #222;
+}
+
+.booking-actions .delete {
+  background-color: #ef4444;
+  color: white;
+}
+
+.booking-actions button:hover {
+  opacity: 0.85;
+}
+
+/* No bookings */
+.no-bookings {
+  text-align: center;
+  color: #777;
+  margin-top: 50px;
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .booking-table {
+    font-size: 0.85rem;
+  }
+
+  .booking-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .booking-actions {
+    flex-direction: column;
+  }
+}

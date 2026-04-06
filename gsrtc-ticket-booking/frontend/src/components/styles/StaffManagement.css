@@ -1,0 +1,61 @@
+/** @format */
+
+.staff-management {
+  max-width: calc(100% - 250px);
+  position: relative;
+  left: 250px;
+  padding: 20px;
+  background: #f7f9fc;
+  min-height: 100vh;
+}
+
+.staff-filters {
+  display: flex;
+  gap: 12px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.staff-filters input,
+.staff-filters select {
+  flex-grow: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #dcdfe6;
+}
+
+.staff-filters button {
+  padding: 8px 18px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.staff-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.staff-table th,
+.staff-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.status.active {
+  color: #16a34a;
+}
+.status.inactive {
+  color: #dc2626;
+}
+.status.suspended {
+  color: #ca8a04;
+}

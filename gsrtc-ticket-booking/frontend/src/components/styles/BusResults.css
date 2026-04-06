@@ -1,0 +1,22 @@
+/** @format */
+
+.bus-results {
+  /* display: none; */
+  /* min-height: 200px; */
+  max-height: 400px;
+  /* display: flex;
+  flex-direction: column; */
+  gap: 1.2rem;
+  margin: 2rem auto;
+  width: 85%;
+  overflow-y: auto;
+  scrollbar-width: none;
+
+}
+
+.no-results {
+  text-align: center;
+  margin: 3rem 0;
+  color: #666;
+  font-size: 1.1rem;
+}

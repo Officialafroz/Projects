@@ -1,0 +1,38 @@
+/** @format */
+
+.admin-container {
+  max-width: calc(100% - 250px);
+  position: relative;
+  left: 260px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.big-card {
+  grid-column: span 2;
+}
+
+.chart-card, .seat-card, .rating-card {
+  grid-column: span 2;
+}
+
+.revenue-card {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: white;
+}

@@ -1,0 +1,198 @@
+/** @format */
+
+.depot-container {
+  position: relative;
+  left: 250px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  padding: 30px;
+  max-width: calc(100% - 250px);
+  /* margin: auto; */
+}
+
+.depot-grid {
+  display: grid;
+  grid-template-columns: 320px 320px 320px;
+  gap: 20px;
+}
+
+.depot-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.depot-card h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.depot-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.revenue {
+  margin-top: 15px;
+  font-weight: bold;
+  color: green;
+}
+
+.search-box {
+  display: flex;
+  gap: 10px;
+  /* margin-bottom: 20px; */
+}
+
+.search-box input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.search-box button {
+  padding: 8px 15px;
+  background: #007bff;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination {
+  position: fixed;
+  bottom: 5px;
+  left: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  border: none;
+  background: #333;
+  color: white;
+  cursor: pointer;
+}
+
+.depot-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 18px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.depot-table th,
+.depot-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.create-depot-container {
+  background: white;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.create-form {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.create-form input,
+.create-form select,
+.create-form textarea {
+  padding: 8px;
+  flex: 1;
+  border: 1px solid grey;
+  border-radius: 5px;
+  outline: none;
+}
+
+.create-form button {
+  padding: 8px 15px;
+  background: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-container h2 {
+  margin: 0;
+}
+
+.modal-input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.update-btn {
+  background: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.cancel-btn {
+  background: #f44336;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.update-btn:hover {
+  background: #45a049;
+}
+
+.cancel-btn:hover {
+  background: #d32f2f;
+}

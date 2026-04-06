@@ -1,0 +1,106 @@
+.transaction-page {
+  max-width: calc(100% - 250px);
+  position: relative;
+  left: 250px;
+  padding: 20px;
+  background: #f7f9fc;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.transaction-page h2 {
+  margin-bottom: 16px;
+  color: #2c3e50;
+}
+
+.transaction-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.transaction-filters input,
+.transaction-filters select {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid #dcdfe6;
+  border-radius: 6px;
+  min-width: 160px;
+  font-size: 14px;
+}
+
+.transaction-filters input:focus,
+.transaction-filters select:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+
+.transaction-filters button {
+  padding: 8px 18px;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.transaction-filters button:hover {
+  background-color: #4338ca;
+}
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.transaction-table thead {
+  background-color: #eef2ff;
+}
+
+.transaction-table th,
+.transaction-table td {
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.transaction-table th {
+  color: #374151;
+  font-weight: 600;
+}
+
+.transaction-table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.transaction-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Status colors */
+.transaction-table td:last-child {
+  font-weight: 600;
+}
+
+.transaction-table td:last-child:contains("SUCCESS") {
+  color: #16a34a;
+}
+
+.transaction-table td:last-child:contains("FAILED") {
+  color: #dc2626;
+}
+
+.transaction-table td:last-child:contains("PENDING") {
+  color: #ca8a04;
+}
+

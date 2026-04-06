@@ -1,0 +1,123 @@
+/* =============================
+   Profile Container
+   ============================= */
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 120px);
+  background-color: #f7f8fa;
+  padding: 20px;
+}
+
+.profile-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 40px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* =============================
+   Profile Header
+   ============================= */
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.profile-avatar {
+  background-color: #c8102e;
+  color: white;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.profile-header h2 {
+  color: #c8102e;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+/* =============================
+   Profile Details
+   ============================= */
+
+.profile-details {
+  text-align: left;
+  margin-top: 15px;
+  color: #333;
+  line-height: 1.8;
+}
+
+.profile-details p {
+  margin: 8px 0;
+  font-size: 1rem;
+}
+
+.profile-details strong {
+  color: #c8102e;
+}
+
+/* =============================
+   Buttons
+   ============================= */
+
+.profile-actions {
+  margin-top: 25px;
+}
+
+.profile-actions button {
+  background-color: #c8102e;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.profile-actions button:hover {
+  background-color: #a40d26;
+}
+
+/* =============================
+   Responsive
+   ============================= */
+
+@media (max-width: 480px) {
+  .profile-card {
+    padding: 30px 20px;
+  }
+
+  .profile-avatar {
+    width: 70px;
+    height: 70px;
+    font-size: 24px;
+  }
+
+  .profile-header h2 {
+    font-size: 1.5rem;
+  }
+}

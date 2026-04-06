@@ -1,0 +1,45 @@
+.admin-form-container {
+  width: 420px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+  margin-top: 10%;
+}
+
+.step-indicator {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.step {
+  font-size: 14px;
+  opacity: 0.4;
+}
+
+.step.active {
+  font-weight: bold;
+  opacity: 1;
+}
+
+input, select {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  
+}
+
+.create-da-btn {
+  width: 100%;
+  padding: 10px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.success-message {
+  text-align: center;
+}

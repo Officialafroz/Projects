@@ -1,0 +1,32 @@
+.about-container {
+  position: relative;
+  top: 70px;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-section {
+  margin-bottom: 25px;
+}
+
+.about-section h3 {
+  color: #007bff;
+  margin-bottom: 8px;
+}
+
+.about-section p {
+  line-height: 1.6;
+}
+
+.about-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.about-section ul li {
+  margin: 6px 0;
+}

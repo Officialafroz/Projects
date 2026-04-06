@@ -1,0 +1,117 @@
+/** @format */
+
+.schedule-management {
+  position: relative;
+  left: 250px;
+  padding: 20px;
+  background-color: #f9fafc;
+  min-height: 100vh;
+  max-width: calc(100% - 250px);
+  z-index: 0;
+}
+
+.schedule-management h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.schedule-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 10px;
+}
+
+.schedule-form select,
+.schedule-form input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.time-input {
+  max-width: 135px;
+}
+
+.schedule-form button {
+  padding: 8px 14px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.schedule-form button:hover {
+  background-color: #0056b3;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.schedule-table th,
+.schedule-table td {
+  width: fit-content;
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 12px;
+  font-size: 14px;
+}
+
+.schedule-table th {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.schedule-table tr:hover {
+  background-color: #f7f9fb;
+}
+
+td button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.actions {
+  width: fit-content;
+}
+
+.status.active {
+  color: green;
+  font-weight: bold;
+}
+
+.status.inactive {
+  color: red;
+  font-weight: bold;
+}
+
+.inactive {
+  background-color: #f8d7da !important;
+}

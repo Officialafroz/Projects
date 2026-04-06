@@ -1,0 +1,35 @@
+/** @format */
+
+.passenger-management {
+  max-width: calc(100% - 250px);
+  position: relative;
+  left: 250px;
+  padding: 20px;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.filter-group {
+  display: flex;
+  gap: 10px;
+}
+
+.passenger-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.passenger-table th,
+.passenger-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.passenger-table th {
+  background: #f5f5f5;
+}

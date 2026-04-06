@@ -1,0 +1,145 @@
+/* ─── Sidebar ─────────────────────────────────────────────────────── */
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #2563EB;          /* Brand blue — matches design */
+  position: sticky;             /* FIX: was `fixed`, which broke flex layout */
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 100;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.2) transparent;
+  flex-shrink: 0;
+}
+
+/* ── Brand title ──────────────────────────────── */
+.sidebar-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 22px 20px 18px;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  margin-bottom: 0;
+  letter-spacing: -0.01em;
+}
+
+/* ── Nav container ────────────────────────────── */
+.top {
+  flex: 1;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+  gap: 2px;
+}
+
+/* ── Nav links ────────────────────────────────── */
+.sidebar-link {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  display: block;
+}
+
+.sidebar-link:hover {
+  background: rgba(255,255,255,0.12);
+  color: #ffffff;
+}
+
+.sidebar-link.active {
+  background: #1D4ED8;
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* ── Accordion shared styles ──────────────────── */
+.sidebar-section {
+  margin-bottom: 2px;
+}
+
+.sidebar-parent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  transition: background 0.15s, color 0.15s;
+}
+
+.sidebar-parent:hover {
+  background: rgba(255,255,255,0.12);
+  color: #ffffff;
+}
+
+.sidebar-children {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+.arrow {
+  font-size: 11px;
+  color: rgba(255,255,255,0.50);
+  transition: transform 0.25s ease;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+/* ── Footer / logout ──────────────────────────── */
+.sidebar-footer {
+  padding: 14px 12px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+/* Override the shared .logout-btn for sidebar context */
+.sidebar-footer .logout-btn {
+  width: 100%;
+  padding: 10px;
+  background: rgba(255,255,255,0.10);
+  color: rgba(255,255,255,0.85);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  border: 1.5px solid rgba(255,255,255,0.18);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+
+.sidebar-footer .logout-btn:hover {
+  background: rgba(239, 68, 68, 0.85);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+/* ── Scrollbar ────────────────────────────────── */
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.18);
+  border-radius: 4px;
+}

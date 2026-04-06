@@ -1,0 +1,237 @@
+/* ─── Navbar ──────────────────────────────────────────────────────── */
+
+.navbarr {
+  width: 100%;
+}
+
+.upper-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #ffffff;
+  border-bottom: 1px solid #E2EAFF;
+  box-shadow: 0 1px 10px rgba(37, 99, 235, 0.07);
+  z-index: 200;
+}
+
+/* ── Logo ─────────────────────────────────────── */
+.navbar-logo {
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.navbar-logo h2 {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #2563EB;
+  letter-spacing: -0.02em;
+}
+
+.navbar-logo p {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  color: #94A3B8;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── Nav links ────────────────────────────────── */
+.lower-nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 64px;
+}
+
+.navbar-links li {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links li a {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #475569;
+  text-decoration: none;
+  padding: 6px 11px;
+  border-radius: 8px;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+
+.navbar-links li a:hover {
+  color: #2563EB;
+  background: #EFF6FF;
+}
+
+.navbar-links li a.active {
+  color: #2563EB;
+  background: #DBEAFE;
+  font-weight: 700;
+}
+
+/* ── Auth actions ─────────────────────────────── */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.navbar-actions .btn {
+  height: 38px;
+  padding: 0 18px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.navbar-actions .btn-primary {
+  background: #2563EB;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28);
+}
+
+.navbar-actions .btn-primary:hover {
+  background: #1D4ED8;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.38);
+  transform: translateY(-1px);
+}
+
+.navbar-actions .btn-outline-primary {
+  background: transparent;
+  color: #2563EB;
+  border: 1.5px solid #BFDBFE;
+}
+
+.navbar-actions .btn-outline-primary:hover {
+  background: #EFF6FF;
+  border-color: #2563EB;
+}
+
+/* ── Avatar / profile dropdown ────────────────── */
+.avatar-container {
+  position: relative;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  background: #2563EB center / cover no-repeat
+    url(/src/assets/images/ben-den-engelsen-YUu9UAcOKZ4-unsplash.jpg);
+  color: white;
+  font-size: 15px;
+  font-weight: 800;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+  border: 2.5px solid #BFDBFE;
+}
+
+.avatar:hover {
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #E2EAFF;
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.12);
+  width: 230px;
+  z-index: 1000;
+  animation: fadeIn 0.18s ease;
+}
+
+.user-dropdown p {
+  margin: 5px 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  color: #334155;
+}
+
+.user-dropdown hr {
+  border: 0;
+  border-top: 1px solid #E2EAFF;
+  margin: 10px 0;
+}
+
+.logout-btn {
+  background: #EFF6FF;
+  border: 1.5px solid #BFDBFE;
+  width: 100%;
+  color: #2563EB;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 9px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+
+.logout-btn:hover {
+  background: #2563EB;
+  color: #ffffff;
+  border-color: #2563EB;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── App-level loading screen ─────────────────── */
+.app-loading {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #EEF2FF;
+}
+
+.app-loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #DBEAFE;
+  border-top-color: #2563EB;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

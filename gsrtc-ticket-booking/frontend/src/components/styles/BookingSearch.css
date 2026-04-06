@@ -1,0 +1,25 @@
+.bus-search-container {
+  padding: 30px;
+  text-align: center;
+}
+
+.bus-search-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
+  background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+}
+
+.bus-search-form input, .bus-search-form button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.bus-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}

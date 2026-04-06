@@ -1,0 +1,86 @@
+/** @format */
+.yb-container {
+  margin-top: 100px;
+  padding: 30px;
+}
+
+.yb-search input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #3a3a3a;
+  background: #fff;
+  color: #fff;
+  margin-bottom: 25px;
+}
+
+.yb-list {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 340px 340px 340px;
+}
+
+.yb-card {
+  background: #fff;
+  padding: 22px;
+  border-radius: 14px;
+  border: 1px solid #383838;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.06);
+  transition: 0.2s;
+}
+
+.yb-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.12);
+}
+
+.yb-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.yb-header h3 {
+  color: #ffcb45;
+  margin: 0;
+}
+
+.yb-date {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.yb-chip {
+  background: #ffcb45;
+  color: #000;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.yb-block p {
+  margin: 6px 0;
+  color: #000;
+}
+
+.yb-fare-box {
+  border-top: 1px solid #444;
+  margin-top: 12px;
+  padding-top: 12px;
+}
+
+.yp-fare-box > .f-summary {
+  color: #fff;
+}
+
+.yb-total {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffcb45;
+}
+
+.yb-empty {
+  text-align: center;
+  color: #909090;
+  margin-top: 40px;
+}

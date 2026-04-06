@@ -1,0 +1,103 @@
+/* =========================================================
+   BudgetModal.css  —  scoped to bm-* classnames
+   ========================================================= */
+
+.bm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bm-box {
+  position: relative;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 36px 28px 28px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Close icon ── */
+.bm-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #f1f5f9;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.bm-close-btn:hover {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+/* ── Text ── */
+.bm-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.bm-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: -8px 0 0;
+}
+
+/* ── Input ── */
+.bm-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1e293b;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.bm-input:focus {
+  border-color: #2563eb;
+}
+
+/* ── Action buttons ── */
+.bm-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.bm-btn {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.12s ease;
+}
+.bm-btn:hover   { opacity: 0.88; transform: translateY(-1px); }
+.bm-btn:active  { transform: translateY(0); }
+.bm-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+.bm-btn--proceed { background: #64748b; color: #ffffff; }
+.bm-btn--update  { background: #2563eb; color: #ffffff; }
