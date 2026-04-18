@@ -3,8 +3,6 @@ package com.elevata.ecommerce.entity;
 import com.elevata.ecommerce.enums.OrderStatus;
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
-
 @Entity
 @Table(name = "orders")
 public class Order {
@@ -12,7 +10,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
-    private int order_id;
+    private int orderId;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
