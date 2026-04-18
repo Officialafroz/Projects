@@ -28,11 +28,12 @@ public class SecurityConfig {
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**", "/oauth2/**", "/api/auth/login/**",
+                        .requestMatchers("/auth/**",
+                                "/oauth2/**", "/api/auth/login/**",
                                 "/api/depot-admin/register", "/error",
                                 "/api/searchBus/results").permitAll()
                         .requestMatchers("/api/auth/me", "/api/auth/logout").hasAnyRole(
-                                "END_USER", "DEPOT_ADMIN", "SUPER_ADMIN")
+                                 "END_USER", "DEPOT_ADMIN", "SUPER_ADMIN")
                         .requestMatchers("/api/end-user/**").hasAnyRole("END_USER", "DEPOT_ADMIN")
                         .requestMatchers("/api/depot/**").hasAnyRole("DEPOT_ADMIN", "SUPER_ADMIN")
                         .requestMatchers("/api/central/**").hasRole("SUPER_ADMIN")

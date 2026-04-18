@@ -4,12 +4,16 @@ import com.elevata.gsrtc.service.CookieService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 
 @Service
 public class CookieImpl implements CookieService {
+    @Value("${jwt-token.expiration}")
+    private int expiration;
+
     @Override
     public void clearTokenCookie(HttpServletResponse response, String tokenType) {
         Cookie cookie = new Cookie(tokenType, null);
@@ -38,7 +42,7 @@ public class CookieImpl implements CookieService {
         cookie.setHttpOnly(true);
         cookie.setSecure(false);
         cookie.setPath("/");
-        cookie.setMaxAge(60 * 4);
+        cookie.setMaxAge(expiration);
 
         response.addCookie(cookie);
     }

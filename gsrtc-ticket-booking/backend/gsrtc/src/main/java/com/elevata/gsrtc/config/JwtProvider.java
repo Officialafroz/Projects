@@ -23,6 +23,9 @@ public class JwtProvider {
     @Value("${jwt-token.secret-key}")
     private String secretKey;
 
+    @Value("${jwt-token.expiration}")
+    private int ACCESS_TOKEN_EXPIRATION;
+
 //    public JwtProvider() {
 //        try {
 //            KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
@@ -35,8 +38,6 @@ public class JwtProvider {
 //    }
 
     public String generateAccessToken(AppUser user) {
-        long ACCESS_TOKEN_EXPIRATION = 20 * 60 * 1000;
-
         return Jwts.builder()
                 .subject(String.valueOf(user.getUserId()))
                 .claim("role", user.getRole().name())
