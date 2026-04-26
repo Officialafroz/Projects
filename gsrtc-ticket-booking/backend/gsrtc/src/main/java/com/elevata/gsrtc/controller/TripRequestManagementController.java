@@ -1,14 +1,11 @@
 package com.elevata.gsrtc.controller;
 
-import com.elevata.gsrtc.dto.TripRequestDetailDTO;
-import com.elevata.gsrtc.dto.TripRequestOverviewDTO;
 import com.elevata.gsrtc.service.TripRequestManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/depot/trip-request")

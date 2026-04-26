@@ -41,31 +41,10 @@ public class EduTripRequestController {
         return requestManagementService.getTripRequestList(id);
     }
 
-
-
     @PostMapping
     public ResponseEntity<String> createTripRequest(
             @RequestBody EduTripRequestCreateDTO tripRequest
     ) {
         return ResponseEntity.ok(educationalTripService.createTripRequest(tripRequest));
     }
-//    @GetMapping("/{id}")
-//    public TripRequestDetailDTO getTripDetails(
-//            @PathVariable Integer id) {
-//
-//        return depotTripRequestService.getTripDetails(id);
-//    }
-
-//    @PostMapping("/{tripRequestId}/advance-payment")
-//    public ResponseEntity<String> receiveAdvancePayment(
-//            @PathVariable Integer tripRequestId,
-//            @RequestParam BigDecimal paidAmount,
-//            @RequestParam PaymentMethod paymentMethod
-//    ) {
-//
-//        String response = depotTripRequestService
-//                .receiveAdvancePayment(tripRequestId, paidAmount, paymentMethod);
-//
-//        return ResponseEntity.ok(response);
-//    }
 }

@@ -46,11 +46,6 @@ public class TripController {
         return ResponseEntity.ok("Bus Trip added.");
     }
 
-//    @PostMapping("/add")
-//    public void add(@RequestBody Trip trip) {
-//        tripService.save(trip);
-//    }
-
     @DeleteMapping("/delete/{tripId}")
     public void delete(@PathVariable int tripId) {
         tripService.delete(tripId);

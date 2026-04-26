@@ -35,16 +35,6 @@ public class RouteController {
     public List<RouteDTO> findByDepotId(@PathVariable int depotId) {
         return routeService.findByDepotId(depotId);
     }
-    
-    @GetMapping("/{routeId}")
-    public BusRoute getRouteById(@PathVariable int routeId) {
-        return routeService.findById(routeId);
-    }
-
-    @PostMapping("/add")
-    public void add(@RequestBody BusRoute route) {
-        routeService.save(route);
-    }
 
     @DeleteMapping("/delete/{routeId}")
     public void delete(@PathVariable int routeId) {

@@ -48,9 +48,4 @@ public class SuperDashboardController {
     public List<GraphDTO> getSeatOccupancy(@RequestParam int year){
         return dashboardService.getSeatOccupancy(year);
     }
-
-//    @GetMapping("/graphs/route-popularity")
-//    public List<GraphDataDTO> getRoutePopularity(){
-//        return dashboardService.getRoutePopularity();
-//    }
 }

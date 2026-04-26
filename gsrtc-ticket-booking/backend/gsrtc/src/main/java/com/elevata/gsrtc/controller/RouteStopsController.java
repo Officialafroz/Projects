@@ -46,11 +46,6 @@ public class RouteStopsController {
 
         return ResponseEntity.ok("Stop deleted.");
     }
-    
-    @PostMapping("/add")
-    public void add(@RequestBody RouteStops stops) {
-        routeStopsService.save(stops);
-    }
 
     @DeleteMapping("/delete/{stopId}")
     public void delete(@PathVariable int stopId) {

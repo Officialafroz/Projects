@@ -32,24 +32,4 @@ public class BookingController {
         }
         return ResponseEntity.ok(response);
     }
-
-//    @GetMapping("/bookings")
-//    public List<Booking> findAll() {
-//        return bookingService.findAll();
-//    }
-//
-//    @GetMapping("/{bookingId}")
-//    public Booking findById(@PathVariable int bookingId) {
-//        return bookingService.findById(bookingId);
-//    }
-//
-//    @PostMapping("/add")
-//    public void add(@RequestBody Booking booking) {
-//        bookingService.save(booking);
-//    }
-//
-//    @DeleteMapping("/delete/{BookingId}")
-//    public void delete(@PathVariable int bookingId) {
-//        bookingService.delete(bookingId);
-//    }
 }

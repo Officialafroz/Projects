@@ -38,34 +38,4 @@ public class BusController {
     public ResponseEntity<String> deleteBus(@PathVariable String busNumber) {
         return ResponseEntity.ok(busService.deleteBus(busNumber));
     }
-
-//    @GetMapping("/buses")
-//    public List<Bus> getBusList() {
-//        return busService.findAll();
-//    }
-//
-//    @GetMapping("/{busId}")
-//    public Bus getBus(@PathVariable int busId) {
-//        return busService.findById(busId);
-//    }
-//
-//    @GetMapping("/{busNumber}")
-//    public ResponseEntity<BusDTO> findByBusNumber(@PathVariable String busNumber) {
-//        return new ResponseEntity<>(busService.findByBusNumber(busNumber), HttpStatus.OK);
-//    }
-//
-//    @PostMapping("/add")
-//    public void add(@RequestBody Bus bus) {
-//        String formattedNumber = bus.getBusNumber();
-//        if (!formattedNumber.matches("^GJ\\d{2}[A-Z]{1,2}\\d{1,4}$")) {
-//            throw new IllegalArgumentException("Invalid bus number.");
-//        }
-//
-//        busService.save(bus);
-//    }
-//
-//    @DeleteMapping("/delete/{busId}")
-//    public void delete(@PathVariable int busId) {
-//        busService.delete(busId);
-//    }
 }

@@ -32,21 +32,6 @@ public class PaymentController {
                 "Educational booking payment created for amount " + dto.getAmount());
     }
 
-    @GetMapping("/payments")
-    public List<Payment> getPaymentList() {
-        return paymentService.findAll();
-    }
-
-    @GetMapping("/{paymentId}")
-    public Payment getPaymentById(@PathVariable int paymentId) {
-        return paymentService.findById(paymentId);
-    }
-
-    @PostMapping("/add")
-    public void add(@RequestBody Payment payment) {
-        paymentService.save(payment);
-    }
-
     @DeleteMapping("/delete/{paymentId}")
     public void delete(@PathVariable int paymentId) {
         paymentService.delete(paymentId);

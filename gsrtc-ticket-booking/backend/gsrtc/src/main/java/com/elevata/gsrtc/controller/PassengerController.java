@@ -37,21 +37,6 @@ public class PassengerController {
         return passengerService.getFare(boardingPoint, destination, tripCode);
     }
 
-    @GetMapping("/passengers")
-    public List<Passenger> findAll() {
-        return passengerService.findAll();
-    }
-
-    @GetMapping("/{passengerId}")
-    public Passenger findById(@PathVariable int passengerId) {
-        return passengerService.findById(passengerId);
-    }
-
-//    @PostMapping("/add")
-//    public void add(@RequestBody Passenger passenger) {
-//        passengerService.save(passenger);
-//    }
-
     @DeleteMapping("/delete/{passengerId}")
     public void delete(@PathVariable int passengerId) {
         passengerService.delete(passengerId);
