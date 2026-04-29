@@ -31,4 +31,11 @@ public class Product {
 
     @Column(name = "price")
     private BigDecimal price;
+
+    public Product(String name, String description, int stock, BigDecimal price) {
+        this.name = name;
+        this.description = description;
+        this.stock = stock;
+        this.price = price;
+    }
 }
