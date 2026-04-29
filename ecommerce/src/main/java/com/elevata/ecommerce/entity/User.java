@@ -1,7 +1,11 @@
 package com.elevata.ecommerce.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter @Setter
 @Entity
 @Table(name = "user")
 public class User {
@@ -21,4 +25,11 @@ public class User {
 
     @Column(name = "address")
     private String address;
+
+    public User(String name, String phoneNumber, int pincode, String address) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.pincode = pincode;
+        this.address = address;
+    }
 }
