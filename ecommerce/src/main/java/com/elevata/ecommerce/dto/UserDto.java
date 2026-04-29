@@ -11,7 +11,7 @@ import lombok.Setter;
 public class UserDto {
     private int userId;
 
-    @Pattern(regexp = "^[A-Za-z]\\w{5,29}$")
+    @Pattern(regexp = "^[A-Za-z]\\w{5,29}$", message = "Invalid name")
     private String name;
 
     @Pattern(regexp = "^[6-9][0-9]{9}$", message = "Invalid mobile number")
