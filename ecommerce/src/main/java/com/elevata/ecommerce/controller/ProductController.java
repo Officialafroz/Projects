@@ -20,7 +20,7 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<?> save(@RequestBody AddProductDto productDto) {
-        return new ResponseEntity<>(productDto, HttpStatus.CREATED);
+        return new ResponseEntity<>(productService.save(productDto), HttpStatus.CREATED);
     }
 
     @GetMapping("/page")
