@@ -1,7 +1,6 @@
 package com.elevata.ecommerce.dto;
 
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,10 +13,9 @@ public class AddProductDto {
     private String name;
     private String description;
 
-    @Pattern(regexp = "^[0-9]$", message = "Invalid stock")
-    @Size(min = 0, message = "Invalid stock length")
+    @PositiveOrZero(message = "Invalid stock length")
     private int stock;
 
-    @Pattern(regexp = "^\\d+(\\.\\d+)?$")
+    @DecimalMin(value = "0.0", inclusive = false, message = "Price must be positive.")
     private BigDecimal price;
 }
