@@ -24,12 +24,11 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public String save(AddProductDto productDto) {
-        productRepository.save(new Product(
-                productDto.getName(),
-                productDto.getDescription(),
-                productDto.getStock(),
-                productDto.getPrice()
-        ));
+        Product product = new Product();
+        product.setName(productDto.getName());
+        product.setDescription(productDto.getDescription());
+        product.setStock(productDto.getStock());
+        product.setPrice(productDto.getPrice());
 
         return "Product added to DB.";
     }
@@ -39,6 +38,7 @@ public class ProductServiceImpl implements ProductService {
 
         Pageable pageable = PageRequest.of(page, size);
 
+        //Required error handling for 0 products
         return productRepository.findAll(pageable)
                 .stream()
                 .map(product -> new ProductResponse(

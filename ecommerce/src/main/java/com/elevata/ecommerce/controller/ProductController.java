@@ -5,6 +5,7 @@ import com.elevata.ecommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,7 +20,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<?> save(@RequestBody AddProductDto productDto) {
+    public ResponseEntity<?> save(@Validated @RequestBody AddProductDto productDto) {
         return new ResponseEntity<>(productService.save(productDto), HttpStatus.CREATED);
     }
 
