@@ -35,4 +35,10 @@ public class GlobalExceptionHandler {
         ErrorResponse errorResponse = new ErrorResponse(LocalDateTime.now(), exception.getMessage(), "Product not found");
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(StoreNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleStoreNotFound(StoreNotFoundException exception) {
+        ErrorResponse errorResponse = new ErrorResponse(LocalDateTime.now(), exception.getMessage(), "Store not found.");
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+    }
 }
