@@ -3,11 +3,12 @@ package com.elevata.ecommerce.dto;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-@AllArgsConstructor
+@Builder
 public class UserDto {
     private int userId;
 

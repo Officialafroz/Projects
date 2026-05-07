@@ -68,11 +68,13 @@ public class StoreServiceImpl implements StoreService {
     private UserDto fetchUser(int id) {
         User vendor = fetchVendor(id);
 
-        return new UserDto(vendor.getUserId(),
-                vendor.getName(),
-                vendor.getPhoneNumber(),
-                vendor.getPincode(),
-                vendor.getAddress());
+            return UserDto.builder()
+                    .userId(vendor.getUserId())
+                    .name(vendor.getName())
+                    .phoneNumber(vendor.getPhoneNumber())
+                    .pincode(vendor.getPincode())
+                    .address(vendor.getAddress())
+                    .build();
     }
 
     private User fetchVendor(int id) {

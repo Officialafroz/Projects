@@ -38,13 +38,16 @@ public class UserServiceImpl implements UserService {
 
         Pageable pageable = PageRequest.of(pageNo, pageSize);
 
+        //Required error handling for no users
         return userRepository.findAll(pageable)
                 .stream()
-                .map(u -> new UserDto(u.getUserId(),
-                        u.getName(),
-                        u.getPhoneNumber(),
-                        u.getPincode(),
-                        u.getAddress())
+                .map(user -> UserDto.builder()
+                        .userId(user.getUserId())
+                        .name(user.getName())
+                        .phoneNumber(user.getPhoneNumber())
+                        .pincode(user.getPincode())
+                        .address(user.getAddress())
+                        .build()
                 ).toList();
     }
 
@@ -54,10 +57,12 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(id)
                     .orElseThrow(() -> new UserNotFoundException("User not found for the id " + id));
 
-        return new UserDto(user.getUserId(),
-                user.getName(),
-                user.getPhoneNumber(),
-                user.getPincode(),
-                user.getAddress());
+        return UserDto.builder()
+                .userId(user.getUserId())
+                .name(user.getName())
+                .phoneNumber(user.getPhoneNumber())
+                .pincode(user.getPincode())
+                .address(user.getAddress())
+                .build();
     }
 }

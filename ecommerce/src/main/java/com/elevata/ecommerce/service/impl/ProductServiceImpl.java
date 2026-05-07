@@ -21,7 +21,6 @@ public class ProductServiceImpl implements ProductService {
         this.productRepository = productRepository;
     }
 
-
     @Override
     public String save(AddProductDto productDto) {
         Product product = new Product();
@@ -30,7 +29,9 @@ public class ProductServiceImpl implements ProductService {
         product.setStock(productDto.getStock());
         product.setPrice(productDto.getPrice());
 
-        return "Product added to DB.";
+        productRepository.save(product);
+
+        return "Product added to Database.";
     }
 
     @Override
@@ -41,12 +42,13 @@ public class ProductServiceImpl implements ProductService {
         //Required error handling for 0 products
         return productRepository.findAll(pageable)
                 .stream()
-                .map(product -> new ProductResponse(
-                        product.getProductId(),
-                        product.getName(),
-                        product.getDescription(),
-                        product.getStock(),
-                        product.getPrice()
-                )).toList();
+                .map(product -> ProductResponse.builder()
+                        .productId(product.getProductId())
+                        .name(product.getName())
+                        .description(product.getDescription())
+                        .stock(product.getStock())
+                        .price(product.getPrice())
+                        .build()
+                ).toList();
     }
 }

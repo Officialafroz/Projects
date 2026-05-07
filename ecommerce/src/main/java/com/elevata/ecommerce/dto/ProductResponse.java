@@ -1,14 +1,11 @@
 package com.elevata.ecommerce.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Getter @Setter
-@AllArgsConstructor
+@Builder
 public class ProductResponse {
 
     private int productId;
