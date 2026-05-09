@@ -1,8 +1,8 @@
 package com.elevata.ecommerce.controller;
 
-import com.elevata.ecommerce.dto.AddStoreDto;
-import com.elevata.ecommerce.dto.StoreResponse;
+import com.elevata.ecommerce.dto.*;
 import com.elevata.ecommerce.service.StoreService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -38,5 +38,18 @@ public class StoreController {
     public ResponseEntity<StoreResponse> findById(@PathVariable int id) {
         StoreResponse storeResponse = storeService.findById(id);
         return new ResponseEntity<>(storeResponse, HttpStatus.FOUND);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<StoreResponse> updateById(
+            @PathVariable int id, @Validated @RequestBody UpdateStoreData data
+    ) {
+        StoreResponse storeResponse = storeService.updateById(id, data);
+        return new ResponseEntity<>(storeResponse, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable int id) {
+        return new ResponseEntity<>(storeService.deleteById(id), HttpStatus.OK);
     }
 }

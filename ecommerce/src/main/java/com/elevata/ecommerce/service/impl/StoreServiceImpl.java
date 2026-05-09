@@ -2,11 +2,13 @@ package com.elevata.ecommerce.service.impl;
 
 import com.elevata.ecommerce.dto.AddStoreDto;
 import com.elevata.ecommerce.dto.StoreResponse;
+import com.elevata.ecommerce.dto.UpdateStoreData;
 import com.elevata.ecommerce.dto.UserDto;
 import com.elevata.ecommerce.entity.Store;
 import com.elevata.ecommerce.entity.User;
 import com.elevata.ecommerce.enums.Country;
 import com.elevata.ecommerce.enums.State;
+import com.elevata.ecommerce.exception.ResourceNotFoundException;
 import com.elevata.ecommerce.exception.StoreNotFoundException;
 import com.elevata.ecommerce.exception.UserNotFoundException;
 import com.elevata.ecommerce.repository.StoreRepository;
@@ -17,6 +19,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class StoreServiceImpl implements StoreService {
@@ -61,6 +65,44 @@ public class StoreServiceImpl implements StoreService {
     @Override
     public StoreResponse findById(int id) {
         Store store = fetchStore(id);
+        return fetchStoreResponse(store);
+    }
+
+    @Override
+    public String deleteById(int id) {
+        Store store = fetchStore(id);
+        storeRepository.delete(store);
+
+        return "Store deleted for id " + id;
+    }
+
+    @Override
+    public StoreResponse updateById(int id, UpdateStoreData data) {
+        Store store = fetchStore(id);
+
+        //Without 'data' it will throw request body is missing, hence the condition won't work
+        if (data != null) {
+            Optional.ofNullable(data.getAddressLine())
+                    .ifPresent(store::setAddressLine);
+
+            Optional.ofNullable(data.getCity())
+                    .ifPresent(store::setCity);
+
+            Optional.ofNullable(data.getContactNumber())
+                    .ifPresent(store::setContactNumber);
+
+            if (data.getPostalCode() != null) {
+                Integer parsedCode = Integer.parseInt(data.getPostalCode());
+
+                Optional.ofNullable(parsedCode)
+                        .ifPresent(store::setPostalCode);
+            }
+
+            store = storeRepository.save(store);
+        } else {
+            throw new ResourceNotFoundException("Data is empty for update operation for id " + id);
+        }
+
         return fetchStoreResponse(store);
     }
 

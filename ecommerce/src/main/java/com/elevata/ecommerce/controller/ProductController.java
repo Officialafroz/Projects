@@ -1,8 +1,8 @@
 package com.elevata.ecommerce.controller;
 
-import com.elevata.ecommerce.dto.AddProductDto;
-import com.elevata.ecommerce.dto.ProductResponse;
+import com.elevata.ecommerce.dto.*;
 import com.elevata.ecommerce.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -32,5 +32,24 @@ public class ProductController {
             @RequestParam(defaultValue = "10") int size
     ) {
         return new ResponseEntity<>(productService.getProductList(page, size), HttpStatus.FOUND);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductResponse> findById(@PathVariable int id) {
+        ProductResponse productResponse = productService.findById(id);
+        return new ResponseEntity<>(productResponse, HttpStatus.FOUND);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductResponse> updateById(
+            @PathVariable int id, @Validated @RequestBody UpdateProductDto productDto
+    ) {
+        ProductResponse productResponse = productService.updateById(id, productDto);
+        return new ResponseEntity<>(productResponse, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable int id) {
+        return new ResponseEntity<>(productService.deleteById(id), HttpStatus.OK);
     }
 }

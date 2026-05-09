@@ -2,6 +2,7 @@ package com.elevata.ecommerce.service;
 
 import com.elevata.ecommerce.dto.AddStoreDto;
 import com.elevata.ecommerce.dto.StoreResponse;
+import com.elevata.ecommerce.dto.UpdateStoreData;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -12,4 +13,9 @@ public interface StoreService {
     String save(AddStoreDto addStoreDto);
 
     StoreResponse findById(int id);
+
+
+    String deleteById(int id);
+
+    StoreResponse updateById(int id, UpdateStoreData data);
 }
