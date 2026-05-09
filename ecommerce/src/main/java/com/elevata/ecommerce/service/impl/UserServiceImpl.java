@@ -7,11 +7,10 @@ import com.elevata.ecommerce.exception.UserNotFoundException;
 import com.elevata.ecommerce.repository.UserRepository;
 import com.elevata.ecommerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -34,21 +33,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> getUsers(int pageNo, int pageSize) {
+    public Page<UserDto> getUsers(int pageNo, int pageSize) {
 
         Pageable pageable = PageRequest.of(pageNo, pageSize);
 
         //Required error handling for no users
         return userRepository.findAll(pageable)
-                .stream()
-                .map(user -> UserDto.builder()
-                        .userId(user.getUserId())
-                        .name(user.getName())
-                        .phoneNumber(user.getPhoneNumber())
-                        .pincode(user.getPincode())
-                        .address(user.getAddress())
-                        .build()
-                ).toList();
+                .map(this::makeDto);
     }
 
     @Override
@@ -57,6 +48,10 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(id)
                     .orElseThrow(() -> new UserNotFoundException("User not found for the id " + id));
 
+        return makeDto(user);
+    }
+
+    private UserDto makeDto(User user) {
         return UserDto.builder()
                 .userId(user.getUserId())
                 .name(user.getName())

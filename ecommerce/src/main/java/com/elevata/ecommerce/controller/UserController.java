@@ -4,6 +4,7 @@ import com.elevata.ecommerce.dto.UserDto;
 import com.elevata.ecommerce.dto.UserRegistrationDto;
 import com.elevata.ecommerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,8 +25,8 @@ public class UserController {
         return ResponseEntity.ok(userService.save(dto));
     }
 
-    @GetMapping("/list")
-    public ResponseEntity<List<UserDto>> getUsers(
+    @GetMapping("/page")
+    public ResponseEntity<Page<UserDto>> getUsers(
             @RequestParam(defaultValue = "0") int pageNo,
             @RequestParam(defaultValue = "10") int pageSize
     ) {

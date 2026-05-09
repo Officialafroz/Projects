@@ -1,8 +1,10 @@
 package com.elevata.ecommerce.controller;
 
 import com.elevata.ecommerce.dto.AddProductDto;
+import com.elevata.ecommerce.dto.ProductResponse;
 import com.elevata.ecommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -25,10 +27,10 @@ public class ProductController {
     }
 
     @GetMapping("/page")
-    public ResponseEntity<?> getProductList(
+    public ResponseEntity<Page<ProductResponse>> getProductList(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ) {
-        return new ResponseEntity<>(productService.getProductList(page, size), HttpStatus.OK);
+        return new ResponseEntity<>(productService.getProductList(page, size), HttpStatus.FOUND);
     }
 }
