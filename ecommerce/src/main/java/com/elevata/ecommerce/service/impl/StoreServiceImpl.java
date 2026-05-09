@@ -60,9 +60,8 @@ public class StoreServiceImpl implements StoreService {
 
     @Override
     public StoreResponse findById(int id) {
-        return storeRepository.findById(id)
-                .map(this::fetchStoreResponse)
-                .orElseThrow(() -> new StoreNotFoundException("Store not found for id " + id));
+        Store store = fetchStore(id);
+        return fetchStoreResponse(store);
     }
 
     private UserDto fetchUser(int id) {
@@ -75,6 +74,11 @@ public class StoreServiceImpl implements StoreService {
                     .pincode(vendor.getPincode())
                     .address(vendor.getAddress())
                     .build();
+    }
+
+    private Store fetchStore(int id) {
+        return storeRepository.findById(id)
+                .orElseThrow(() -> new StoreNotFoundException("Store not found for id " + id));
     }
 
     private User fetchVendor(int id) {
