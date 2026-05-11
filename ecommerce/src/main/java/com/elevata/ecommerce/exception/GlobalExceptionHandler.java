@@ -58,4 +58,10 @@ public class GlobalExceptionHandler {
         ErrorResponse errorResponse = new ErrorResponse(LocalDateTime.now(), exception.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(SellerNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleSellerNotFound(SellerNotFoundException exception) {
+        ErrorResponse errorResponse = new ErrorResponse(LocalDateTime.now(), exception.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+    }
 }
