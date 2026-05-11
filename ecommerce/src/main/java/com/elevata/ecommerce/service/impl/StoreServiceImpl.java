@@ -1,18 +1,17 @@
 package com.elevata.ecommerce.service.impl;
 
-import com.elevata.ecommerce.dto.AddStoreDto;
-import com.elevata.ecommerce.dto.StoreResponse;
-import com.elevata.ecommerce.dto.UpdateStoreData;
-import com.elevata.ecommerce.dto.UserDto;
+import com.elevata.ecommerce.dto.*;
+import com.elevata.ecommerce.entity.Seller;
 import com.elevata.ecommerce.entity.Store;
 import com.elevata.ecommerce.entity.User;
 import com.elevata.ecommerce.enums.Country;
 import com.elevata.ecommerce.enums.State;
 import com.elevata.ecommerce.exception.ResourceNotFoundException;
+import com.elevata.ecommerce.exception.SellerNotFoundException;
 import com.elevata.ecommerce.exception.StoreNotFoundException;
 import com.elevata.ecommerce.exception.UserNotFoundException;
+import com.elevata.ecommerce.repository.SellerRepository;
 import com.elevata.ecommerce.repository.StoreRepository;
-import com.elevata.ecommerce.repository.UserRepository;
 import com.elevata.ecommerce.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,12 +26,12 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public class StoreServiceImpl implements StoreService {
     private StoreRepository storeRepository;
-    private UserRepository userRepository;
+    private SellerRepository sellerRepository;
 
     @Autowired
-    public StoreServiceImpl(StoreRepository storeRepository, UserRepository userRepository) {
+    public StoreServiceImpl(StoreRepository storeRepository, SellerRepository sellerRepository) {
         this.storeRepository = storeRepository;
-        this.userRepository = userRepository;
+        this.sellerRepository = sellerRepository;
     }
 
     @Override
@@ -111,14 +110,14 @@ public class StoreServiceImpl implements StoreService {
         return fetchStoreResponse(store);
     }
 
-    private UserDto fetchUser(int id) {
-        User vendor = fetchVendor(id);
+    private SellerResponse fetchSeller(int id) {
+        Seller vendor = fetchVendor(id);
 
-        return UserDto.builder()
-                .userId(vendor.getUserId())
-                .name(vendor.getName())
+        return SellerResponse.builder()
+                .sellerId(vendor.getSellerId())
+                .fullName(vendor.getFullName())
                 .phoneNumber(vendor.getPhoneNumber())
-                .pincode(vendor.getPincode())
+                .email(vendor.getEmail())
                 .address(vendor.getAddress())
                 .build();
     }
@@ -128,9 +127,9 @@ public class StoreServiceImpl implements StoreService {
                 .orElseThrow(() -> new StoreNotFoundException("Store not found for id " + id));
     }
 
-    private User fetchVendor(int id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException("User not found for id " + id));
+    private Seller fetchVendor(int id) {
+        return sellerRepository.findById(id)
+                .orElseThrow(() -> new SellerNotFoundException("Seller not found for id " + id));
     }
 
     private StoreResponse fetchStoreResponse(Store store) {
@@ -138,7 +137,7 @@ public class StoreServiceImpl implements StoreService {
         return StoreResponse.builder()
                 .storeId(store.getStoreId())
                 .name(store.getName())
-                .vendor(fetchUser(store.getVendor().getUserId()))
+                .vendor(fetchSeller(store.getVendor().getSellerId()))
                 .address(String.format("%s, %s, %s, %s",
                         store.getAddressLine(), store.getCity(), store.getState(), store.getCountry()))
                 .contactNumber(store.getContactNumber())

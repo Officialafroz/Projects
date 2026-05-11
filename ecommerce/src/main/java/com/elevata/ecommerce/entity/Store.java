@@ -15,9 +15,9 @@ public class Store {
     @Column(name = "store_id")
     private int storeId;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "vendor_id")
-    private User vendor;
+    private Seller vendor;
 
     @Column(name = "name")
     private String name;

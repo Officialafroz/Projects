@@ -7,7 +7,7 @@ import lombok.*;
 @Builder
 public class StoreResponse {
     private int storeId;
-    private UserDto vendor;
+    private SellerResponse vendor;
     private String name;
 
     //Concatenation of address line, city, state and country
