@@ -3,13 +3,11 @@ package com.elevata.ecommerce.service.impl;
 import com.elevata.ecommerce.dto.*;
 import com.elevata.ecommerce.entity.Seller;
 import com.elevata.ecommerce.entity.Store;
-import com.elevata.ecommerce.entity.User;
 import com.elevata.ecommerce.enums.Country;
 import com.elevata.ecommerce.enums.State;
 import com.elevata.ecommerce.exception.ResourceNotFoundException;
 import com.elevata.ecommerce.exception.SellerNotFoundException;
 import com.elevata.ecommerce.exception.StoreNotFoundException;
-import com.elevata.ecommerce.exception.UserNotFoundException;
 import com.elevata.ecommerce.repository.SellerRepository;
 import com.elevata.ecommerce.repository.StoreRepository;
 import com.elevata.ecommerce.service.StoreService;
@@ -40,7 +38,7 @@ public class StoreServiceImpl implements StoreService {
         Pageable pageable = PageRequest.of(page, size);
 
         return storeRepository.findAll(pageable)
-                .map(this::fetchStoreResponse);
+                .map(this::makeDto);
     }
 
     @Override
@@ -67,7 +65,7 @@ public class StoreServiceImpl implements StoreService {
     @Override
     public StoreResponse findById(int id) {
         Store store = fetchStore(id);
-        return fetchStoreResponse(store);
+        return makeDto(store);
     }
 
     @Override
@@ -107,7 +105,7 @@ public class StoreServiceImpl implements StoreService {
             throw new ResourceNotFoundException("Data is empty for update operation for id " + id);
         }
 
-        return fetchStoreResponse(store);
+        return makeDto(store);
     }
 
     private SellerResponse fetchSeller(int id) {
@@ -132,7 +130,7 @@ public class StoreServiceImpl implements StoreService {
                 .orElseThrow(() -> new SellerNotFoundException("Seller not found for id " + id));
     }
 
-    private StoreResponse fetchStoreResponse(Store store) {
+    private StoreResponse makeDto(Store store) {
 
         return StoreResponse.builder()
                 .storeId(store.getStoreId())

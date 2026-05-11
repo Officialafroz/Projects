@@ -11,7 +11,7 @@ public interface SellerService {
 
     String save(AddSellerDto dto);
 
-    Page<SellerResponse> getSellers(int page, int size);
+    Page<SellerResponse> getSellersListPage(int page, int size);
 
     SellerResponse findById(int id);
 

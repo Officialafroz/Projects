@@ -7,14 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/admin/product")
 public class ProductController {
-
-    private ProductService productService;
+    private final ProductService productService;
 
     @Autowired
     public ProductController(ProductService productService) {
@@ -22,34 +20,37 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<?> save(@Validated @RequestBody AddProductDto productDto) {
-        return new ResponseEntity<>(productService.save(productDto), HttpStatus.CREATED);
+    public ResponseEntity<String> save(@Valid @RequestBody AddProductDto dto) {
+        String message = productService.save(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(message);
     }
 
     @GetMapping("/page")
-    public ResponseEntity<Page<ProductResponse>> getProductList(
+    public ResponseEntity<Page<ProductResponse>> getProductListPage(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ) {
-        return new ResponseEntity<>(productService.getProductList(page, size), HttpStatus.FOUND);
+        Page<ProductResponse> responses = productService.getProductListPage(page, size);
+        return ResponseEntity.status(HttpStatus.FOUND).body(responses);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductResponse> findById(@PathVariable int id) {
         ProductResponse productResponse = productService.findById(id);
-        return new ResponseEntity<>(productResponse, HttpStatus.FOUND);
+        return ResponseEntity.status(HttpStatus.FOUND).body(productResponse);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<ProductResponse> updateById(
-            @PathVariable int id, @Validated @RequestBody UpdateProductDto productDto
+            @PathVariable int id, @Valid @RequestBody UpdateProductDto dto
     ) {
-        ProductResponse productResponse = productService.updateById(id, productDto);
-        return new ResponseEntity<>(productResponse, HttpStatus.OK);
+        ProductResponse productResponse = productService.updateById(id, dto);
+        return ResponseEntity.status(HttpStatus.OK).body(productResponse);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteById(@PathVariable int id) {
-        return new ResponseEntity<>(productService.deleteById(id), HttpStatus.OK);
+        String message = productService.deleteById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(message);
     }
 }

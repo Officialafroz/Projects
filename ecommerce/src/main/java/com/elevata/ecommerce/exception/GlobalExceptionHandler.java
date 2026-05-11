@@ -17,13 +17,13 @@ import java.util.Map;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<?> handleValidationErrors(MethodArgumentNotValidException exception) {
+    public ResponseEntity<Map<String, String>> handleValidationErrors(MethodArgumentNotValidException exception) {
         Map<String, String> errors = new HashMap<>();
 
         exception.getBindingResult().getFieldErrors().forEach(error ->
                 errors.put(error.getField(), error.getDefaultMessage()));
 
-        return ResponseEntity.badRequest().body(errors);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }
 
     @ExceptionHandler(DataAccessException.class)
@@ -37,31 +37,31 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleResourceNotFound(ResourceNotFoundException exception) {
-        ErrorResponse errorResponse = new ErrorResponse(LocalDateTime.now(), exception.getMessage());
-        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+        return errorWithNotFoundStatus(exception);
     }
 
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleUserNotFound(UserNotFoundException exception) {
-        ErrorResponse errorResponse = new ErrorResponse(LocalDateTime.now(), exception.getMessage());
-        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+        return errorWithNotFoundStatus(exception);
     }
 
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleProductNotFound(ProductNotFoundException exception) {
-        ErrorResponse errorResponse = new ErrorResponse(LocalDateTime.now(), exception.getMessage());
-        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+        return errorWithNotFoundStatus(exception);
     }
 
     @ExceptionHandler(StoreNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleStoreNotFound(StoreNotFoundException exception) {
-        ErrorResponse errorResponse = new ErrorResponse(LocalDateTime.now(), exception.getMessage());
-        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+        return errorWithNotFoundStatus(exception);
     }
 
     @ExceptionHandler(SellerNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleSellerNotFound(SellerNotFoundException exception) {
-        ErrorResponse errorResponse = new ErrorResponse(LocalDateTime.now(), exception.getMessage());
-        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+        return errorWithNotFoundStatus(exception);
+    }
+
+    private ResponseEntity<ErrorResponse> errorWithNotFoundStatus(Exception exception) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new ErrorResponse(LocalDateTime.now(), exception.getMessage()));
     }
 }

@@ -21,16 +21,17 @@ public class SellerController {
 
     @PostMapping
     public ResponseEntity<String> save(@Valid @RequestBody AddSellerDto dto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(sellerService.save(dto));
+        String message = sellerService.save(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(message);
     }
 
     @GetMapping("/page")
-    public ResponseEntity<Page<SellerResponse>> getUsers(
+    public ResponseEntity<Page<SellerResponse>> getSellersListPage(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ) {
-        Page<SellerResponse> responses = sellerService.getSellers(page, size);
-        return ResponseEntity.status(HttpStatus.OK).body(responses);
+        Page<SellerResponse> responses = sellerService.getSellersListPage(page, size);
+        return ResponseEntity.status(HttpStatus.FOUND).body(responses);
     }
 
     @GetMapping("/{id}")
@@ -49,6 +50,7 @@ public class SellerController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteById(@PathVariable int id) {
-        return ResponseEntity.status(HttpStatus.OK).body(sellerService.deleteById(id));
+        String message = sellerService.deleteById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(message);
     }
 }

@@ -2,14 +2,13 @@ package com.elevata.ecommerce.dto;
 
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
 @Builder
-public class UserDto {
+public class UserResponse {
     private int userId;
 
     @Pattern(regexp = "^[A-Za-z]\\w{5,29}$", message = "Invalid name")

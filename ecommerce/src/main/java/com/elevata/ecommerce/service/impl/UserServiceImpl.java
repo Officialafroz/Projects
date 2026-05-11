@@ -1,7 +1,7 @@
 package com.elevata.ecommerce.service.impl;
 
 import com.elevata.ecommerce.dto.UpdateUserDto;
-import com.elevata.ecommerce.dto.UserDto;
+import com.elevata.ecommerce.dto.UserResponse;
 import com.elevata.ecommerce.dto.UserRegistrationDto;
 import com.elevata.ecommerce.entity.User;
 import com.elevata.ecommerce.exception.ResourceNotFoundException;
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Page<UserDto> getUsers(int pageNo, int pageSize) {
+    public Page<UserResponse> getUsersListPage(int pageNo, int pageSize) {
 
         Pageable pageable = PageRequest.of(pageNo, pageSize);
 
@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto findById(int id) {
+    public UserResponse findById(int id) {
         User user = fetchUser(id);
         return makeDto(user);
     }
@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public UserDto updateById(int id, UpdateUserDto dto) {
+    public UserResponse updateById(int id, UpdateUserDto dto) {
         User user = fetchUser(id);
 
         //Without 'dto' it will throw request body is missing, hence the condition won't work
@@ -92,8 +92,8 @@ public class UserServiceImpl implements UserService {
         return makeDto(user);
     }
 
-    private UserDto makeDto(User user) {
-        return UserDto.builder()
+    private UserResponse makeDto(User user) {
+        return UserResponse.builder()
                 .userId(user.getUserId())
                 .name(user.getName())
                 .phoneNumber(user.getPhoneNumber())

@@ -7,17 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/admin/store")
 public class StoreController {
-    private StoreService storeService;
+    private final StoreService storeService;
 
     @Autowired
     public StoreController(StoreService storeService) {
         this.storeService = storeService;
+    }
+
+    @PostMapping
+    public ResponseEntity<String> save(@Valid @RequestBody AddStoreDto dto) {
+        String message = storeService.save(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(message);
     }
 
     @GetMapping("/page")
@@ -25,31 +30,27 @@ public class StoreController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ) {
-        Page<StoreResponse> storePage = storeService.getStoreListPage(page, size);
-        return new ResponseEntity<>(storePage, HttpStatus.OK);
-    }
-
-    @PostMapping
-    public ResponseEntity<String> save(@Validated @RequestBody AddStoreDto addStoreDto) {
-        return new ResponseEntity<>(storeService.save(addStoreDto), HttpStatus.CREATED);
+        Page<StoreResponse> responses = storeService.getStoreListPage(page, size);
+        return ResponseEntity.status(HttpStatus.FOUND).body(responses);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<StoreResponse> findById(@PathVariable int id) {
-        StoreResponse storeResponse = storeService.findById(id);
-        return new ResponseEntity<>(storeResponse, HttpStatus.FOUND);
+        StoreResponse response = storeService.findById(id);
+        return ResponseEntity.status(HttpStatus.FOUND).body(response);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<StoreResponse> updateById(
-            @PathVariable int id, @Validated @RequestBody UpdateStoreData data
+            @PathVariable int id, @Valid @RequestBody UpdateStoreData data
     ) {
-        StoreResponse storeResponse = storeService.updateById(id, data);
-        return new ResponseEntity<>(storeResponse, HttpStatus.OK);
+        StoreResponse response = storeService.updateById(id, data);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteById(@PathVariable int id) {
-        return new ResponseEntity<>(storeService.deleteById(id), HttpStatus.OK);
+        String message = storeService.deleteById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(message);
     }
 }

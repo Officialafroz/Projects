@@ -42,7 +42,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductResponse> getProductList(int page, int size) {
+    public Page<ProductResponse> getProductListPage(int page, int size) {
 
         Pageable pageable = PageRequest.of(page, size);
 

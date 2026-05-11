@@ -11,7 +11,7 @@ public interface ProductService {
 
     String save(AddProductDto productDto);
 
-    Page<ProductResponse> getProductList(int page, int size);
+    Page<ProductResponse> getProductListPage(int page, int size);
 
     ProductResponse findById(int id);
 

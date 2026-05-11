@@ -41,7 +41,7 @@ public class SellerServiceImpl implements SellerService {
     }
 
     @Override
-    public Page<SellerResponse> getSellers(int pageNo, int pageSize) {
+    public Page<SellerResponse> getSellersListPage(int pageNo, int pageSize) {
 
         Pageable pageable = PageRequest.of(pageNo, pageSize);
 
