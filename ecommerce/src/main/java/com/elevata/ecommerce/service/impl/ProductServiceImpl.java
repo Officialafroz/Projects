@@ -13,10 +13,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Service
+@Transactional(readOnly = true)     //Skips dirty checking (performance boot)
 public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
 
@@ -26,6 +28,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public String save(AddProductDto productDto) {
         Product product = new Product();
         product.setName(productDto.getName());
@@ -55,6 +58,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public String deleteById(int id) {
         Product product = fetchProduct(id);
         productRepository.delete(product);
@@ -63,6 +67,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public ProductResponse updateById(int id, UpdateProductDto dto) {
         Product product = fetchProduct(id);
 

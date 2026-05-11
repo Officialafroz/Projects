@@ -19,10 +19,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Service
+@Transactional(readOnly = true)
 public class StoreServiceImpl implements StoreService {
     private StoreRepository storeRepository;
     private UserRepository userRepository;
@@ -43,6 +45,7 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public String save(AddStoreDto addStoreDto) {
         Store store = new Store();
         store.setName(addStoreDto.getName());
@@ -69,6 +72,7 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public String deleteById(int id) {
         Store store = fetchStore(id);
         storeRepository.delete(store);
@@ -77,6 +81,7 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public StoreResponse updateById(int id, UpdateStoreData data) {
         Store store = fetchStore(id);
 
@@ -109,13 +114,13 @@ public class StoreServiceImpl implements StoreService {
     private UserDto fetchUser(int id) {
         User vendor = fetchVendor(id);
 
-            return UserDto.builder()
-                    .userId(vendor.getUserId())
-                    .name(vendor.getName())
-                    .phoneNumber(vendor.getPhoneNumber())
-                    .pincode(vendor.getPincode())
-                    .address(vendor.getAddress())
-                    .build();
+        return UserDto.builder()
+                .userId(vendor.getUserId())
+                .name(vendor.getName())
+                .phoneNumber(vendor.getPhoneNumber())
+                .pincode(vendor.getPincode())
+                .address(vendor.getAddress())
+                .build();
     }
 
     private Store fetchStore(int id) {
@@ -142,3 +147,4 @@ public class StoreServiceImpl implements StoreService {
                 .build();
     }
 }
+
